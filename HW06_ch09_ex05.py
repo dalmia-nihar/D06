@@ -15,12 +15,29 @@
 ##############################################################################
 # Imports
 
+import os
+
 # Body
+def uses_all(wrd,st):
+    for letter in st:
+        if letter not in wrd: 
+            return False
+    return True
+
+def word_count(s):
+    with open("words.txt", "r") as f:
+        count = 0
+        for name in f:
+            if uses_all(name.strip(), s):
+                count += 1
+        print("Number of words that contain all of " + s + " are :" + str(count))
+
 
 
 ##############################################################################
 def main():
-    pass  # Call your function(s) here.
+    word_count("aeiou")
+    word_count("aeiouy")
 
 if __name__ == '__main__':
     main()

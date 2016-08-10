@@ -14,11 +14,30 @@
 # Imports
 
 # Body
+def has_no_e(s):
+	if 'e' in s:
+		return False
+	else: 
+		return True
+
+def print_no_e():
+	no_e_count = 0
+	total_count = 0
+	with open("words.txt", "r") as f:
+		for s in f:
+			total_count += 1
+			if has_no_e(s.strip()) :
+				no_e_count += 1
+				print(s.strip())
+				
+	print("Number of Names without 'e' > " + str(no_e_count))
+	print("Total Number of Names > " + str(total_count))
+	print("Percentage of no e's > " + str(no_e_count * 100 / total_count))
 
 
 ##############################################################################
 def main():
-    pass  # Call your function(s) here.
+    print_no_e()  # Call your function(s) here.
 
 if __name__ == '__main__':
     main()

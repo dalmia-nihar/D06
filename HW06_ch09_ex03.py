@@ -18,23 +18,40 @@
 #   - have that function print the letters and print the # of words excluded
 ##############################################################################
 # Imports
-
+import sys
+import os
 # Body
 
 
-def avoids():
+def avoids(wrd,st):
     """ return True if word NOT forbidden"""
-    ...
+    for letter in st:
+        if letter in wrd: 
+            return False
+    return True
+
+def print_forbidden(s):
+    with open("words.txt", "r") as f:
+        count = 0
+        for name in f:
+            if avoids(name.strip(), s):
+                count += 1
+        print("Number of words that are not forbidden are: " + str(count))
+
 
 
 def forbidden_prompt():
     """ print count of words NOT forbidden by input"""
-    ...
+    forbid_str = input("Please enter list of forbidden chars: ")
+    print_forbidden(forbid_str)
+
 
 
 def forbidden_param():
     """ return count of words NOT forbidden by param"""
-    ...
+    if len(sys.argv) == 2:
+        print_forbidden(sys.argv[1])
+
 
 
 def find_five():
@@ -43,8 +60,9 @@ def find_five():
 
 ##############################################################################
 def main():
-    ...
     # Your final submission should only call five_five
+    forbidden_param()
+
 
 if __name__ == '__main__':
     main()

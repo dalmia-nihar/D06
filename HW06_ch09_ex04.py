@@ -16,12 +16,27 @@
 ##############################################################################
 # Imports
 
+import os
+
 # Body
+def uses_only(wrd,st):
+    for letter in wrd:
+        if letter not in st: 
+            return False
+    return True
+
+def print_sentence():
+    with open("words.txt", "r") as f:
+        for name in f:
+            if uses_only(name.strip(), "acefhlo"):
+                print(name.strip(), end = " ")
+    print(".")
+        
 
 
 ##############################################################################
 def main():
-    pass  # Call your function(s) here.
+    print_sentence()  # Call your function(s) here.
 
 if __name__ == '__main__':
     main()
